@@ -1,0 +1,5 @@
+<div *ngIf="messageService.messages.length">
+    <div *ngFor="let message of messageService.messages"
+        [ngClass]="{'invalid-feedback d-block':message.type==0,'valid-feedback d-block':message.type==1}">
+        {{message.message}}</div>
+</div>
