@@ -16,3 +16,5 @@ port = 3003
 app.listen(port,()=>{
     console.log(`app is listenting to ${port}`);
 })
+
+module.exports = app
