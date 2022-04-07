@@ -2,10 +2,10 @@
     <div class="bg-white border rounded-5 col-6 p-5 m-4">
         <div class="d-flex justify-content-centerd-flex justify-content-center fs-3 fw-lighter" style="color: blue;">
             Register</div>
-        <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" id="registartionForm">
             <!-- Email input -->
             <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example1">Email address</label>
+                <label class="form-label" for="form2Example1">User name</label>
                 <input [(ngModel)]="model.user_name" type="email" name="user_name" class="form-control" />
             </div>
 
@@ -31,4 +31,3 @@
         </form>
     </div>
 </div>
-<app-message></app-message>
