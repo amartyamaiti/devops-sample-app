@@ -17,15 +17,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.registerUser(this.model).subscribe(user => this.redirectToLogin(user));
+    this.userService.registerUser(this.model).subscribe({
+      next: (user) => this.redirectToLogin(user)
+    });
   }
 
   redirectToLogin(user: User) {
     if (user._id) {
       this.messageService.add('User register successfully.', 1);
-      setTimeout(() => {
-        this.messageService.clear();
-      }, 4000);
       this.router.navigate(["/login"]);
     }
   }

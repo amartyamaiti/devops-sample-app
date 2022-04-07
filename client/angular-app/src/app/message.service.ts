@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Message } from './message';
 
 @Injectable({
@@ -8,13 +9,18 @@ export class MessageService {
 
   constructor() { }
 
-  messages: Message[] = [];
+  private messages = new BehaviorSubject<Message>(new Message(''));
 
-  add(message: string, type: number) {
-    this.messages.push(new Message(message, type));
+  add(message: string, mtype: number) {
+    this.messages.next(new Message(message, mtype));
+    return this.messages;
   }
 
   clear() {
-    this.messages = [];
+    this.messages.next(new Message(''));
+  }
+
+  display(): Observable<Message> {
+    return this.messages.asObservable();
   }
 }
