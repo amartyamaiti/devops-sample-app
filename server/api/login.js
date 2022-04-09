@@ -5,9 +5,9 @@ const Login = require('../database/models/register')
 loginRoute.post('/', async (req,res)=>{
     try{
         const validUser = await Login.findOne({user_email:req.body.user_email})
-        if(!validUser) return res.status(400).send("User email doesn't exist")
+        if(!validUser) return res.status(400).json({message:"User email doesn't exist"})
         const validPassword = await bcrypt.compare(req.body.password,validUser.password)
-        if(!validPassword) return res.status(400).send("Please enter the correct password")
+        if(!validPassword) return res.status(400).json({message:"Please enter the correct password"})
         return res.status(200).json({user_email:validUser.user_email,user_name:validUser.user_name})
     }
     catch(err){

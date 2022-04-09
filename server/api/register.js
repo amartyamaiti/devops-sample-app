@@ -6,7 +6,7 @@ const Register = require('../database/models/register')
 
 registerRoute.post('/', async (req, res) => {
     const emailExist = await Register.findOne({user_email:req.body.user_email})
-    if(emailExist) return res.status(400).send("User email already exists.")
+    if(emailExist) return res.status(400).json({message:"User email already exists."})
 
     const salt = await bcrypt.genSalt(10)
     const hashPassword = await bcrypt.hash(req.body.password,salt)
@@ -17,7 +17,7 @@ registerRoute.post('/', async (req, res) => {
     })
     try{
         const userSaved = await newUser.save();
-        console.log(userSaved);
+        //console.log(userSaved);
         res.json({id:userSaved._id, message:'Registered Successfully'})
     }
     catch(err){
