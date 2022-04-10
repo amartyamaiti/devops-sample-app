@@ -36,7 +36,7 @@ it('check initial form values for registration form group', (() => {
 	username2:'',
 	password:''
 	}
-    expect(loginFormGroup['user_email']).toEqual(loginFormValues.username1);
+    expect(loginFormGroup['user_name']).toEqual(loginFormValues.username1);
     expect(loginFormGroup['user_email']).toEqual(loginFormValues.username2);
     expect(loginFormGroup['password']).toEqual(loginFormValues.password);
   }));

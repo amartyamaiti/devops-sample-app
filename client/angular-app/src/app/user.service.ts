@@ -43,9 +43,9 @@ export class UserService {
 
   private log(message: string) {
     this.messageService.add('UserService:' + message, 0);
-    setTimeout(() => {
-      this.messageService.clear();
-    }, 4000);
+    // setTimeout(() => {
+    //   this.messageService.clear();
+    // }, 4000);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

@@ -17,8 +17,8 @@ registerRoute.post('/', async (req, res) => {
     })
     try{
         const userSaved = await newUser.save();
-        //console.log(userSaved);
-        res.json({id:userSaved._id, message:'Registered Successfully'})
+        console.log(userSaved);
+        res.json({_id:userSaved._id, message:'Registered Successfully'})
     }
     catch(err){
         res.status(500).send(err)
