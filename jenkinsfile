@@ -8,7 +8,18 @@ pipeline{
                 docker info
                 docker compose version
                 '''
-                }
+            }
+        }
+        stage("Remove old docker data"){
+            steps{
+                sh 'docker compose down --rmi local --volumes'
+            }
+        }
+        stage("Start container"){
+            steps{
+                sh 'docker compose up'
+                sh 'docker compose ps'
+            }
         }
     }
 }
