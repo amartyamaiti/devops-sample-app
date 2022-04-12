@@ -4,6 +4,9 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    container_name: devops-db
+    volumes:
+      - db_data:/data/db
   nodejs-server:
     build:
       context: ./server
@@ -18,3 +21,5 @@ services:
     container_name: devops-ang-app
     depends_on:
       - mongodb-devops
+volumes:
+  db_data:
