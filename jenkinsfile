@@ -15,6 +15,11 @@ pipeline{
                 sh 'docker compose down --rmi local --volumes'
             }
         }
+        stage("Test server"){
+            steps{
+                sh "docker compose up -d mongodb-devops"
+            }
+        }
         stage("Start container"){
             steps{
                 sh 'docker compose up -d --wait'
@@ -32,10 +37,10 @@ pipeline{
             }
         }
     }
-    post{
-        always{
-            sh 'docker compose down --rmi local --volumes'
-            sh 'docker compose ps'
-        }
-    }
+    // post{
+    //     always{
+    //         sh 'docker compose down --rmi local --volumes'
+    //         sh 'docker compose ps'
+    //     }
+    // }
 }
