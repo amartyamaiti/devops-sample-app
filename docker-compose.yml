@@ -15,8 +15,6 @@ services:
     container_name: devops-server
     depends_on:
       - mongodb-devops
-    environment:
-      WAIT_HOSTS: mongodb-devops:27017
   angular-ui:
     build:
       context: ./client/angular-app
