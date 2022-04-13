@@ -13,6 +13,8 @@ services:
     ports:
       - "3003:3003"
     container_name: devops-server
+    depends_on:
+      - mongodb-devops
   angular-ui:
     build:
       context: ./client/angular-app
@@ -20,6 +22,6 @@ services:
       - "4200:4200"
     container_name: devops-ang-app
     depends_on:
-      - mongodb-devops
+      - nodejs-server
 volumes:
   db_data:
