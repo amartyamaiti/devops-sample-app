@@ -1,0 +1,47 @@
+pipeline{
+    agent any
+    stages{
+        // stage("verify tools"){
+        //     steps{
+        //         sh '''
+        //         docker version
+        //         docker info
+        //         docker compose version
+        //         '''
+        //     }
+        // }
+        stage("Build"){
+            steps{
+                sh "npm install"
+                sh "npm run build"
+            }
+        }
+        // stage("Test server"){
+        //     steps{
+        //         sh "docker compose up -d mongodb-devops"
+        //     }
+        // }
+        // stage("Start container"){
+        //     steps{
+        //         sh 'docker compose up -d --wait'
+        //         sh 'docker compose ps'
+        //     }
+        // }
+        // stage("SonarQube analysis"){
+        //     steps{
+        //         script{
+        //             def scannerHome= tool 'SonarQubeScan';
+        //             withSonarQubeEnv('Sonarqube'){
+        //                 sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=devops-sample -Dsonar.projectName=devops-sample-app"
+        //             }
+        //         }
+        //     }
+        // }
+    }
+    // post{
+    //     always{
+    //         sh 'docker compose down --rmi local --volumes'
+    //         sh 'docker compose ps'
+    //     }
+    // }
+}
